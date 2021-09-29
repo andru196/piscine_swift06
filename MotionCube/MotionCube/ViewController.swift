@@ -9,17 +9,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var animator: UIDynamicAnimator!
+    var arrayBox: [UIView]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        arrayBox = [UIView]()
+        animator = UIDynamicAnimator(referenceView: view)
     }
 
+    
     @IBAction func showMoreActions(touch: UITapGestureRecognizer) {
 
-           let touchPoint = touch.location(in: self.view)
-        let DynamicView = RandomUIV(touchPoint.x, touchPoint.y)
-           self.view.addSubview(DynamicView)
+        let touchPoint = touch.location(in: self.view)
 
+        RandomUIV(touchPoint.x, touchPoint.y, self, animator)
+        
     }
+    
 }
 
